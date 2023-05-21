@@ -1,0 +1,19 @@
+version: '3'
+services:
+  # NGINX
+  nginx:
+    ports:
+      - "80:80"
+  # NODE
+  node:
+    build:
+      args:
+        - NODE_ENV=production
+    environment:
+      - NODE_ENV=production
+    command: node index.js
+  # MONGO
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root

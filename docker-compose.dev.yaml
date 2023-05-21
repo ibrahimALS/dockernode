@@ -1,0 +1,24 @@
+version: '3'
+services:
+  # NGINX
+  nginx:
+    ports:
+      - "3000:80"
+  # NODE
+  node:
+    build:
+      args:
+        - NODE_ENV=development
+    volumes:
+      - "./:/app"
+      - "/app/node_modules"
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+  # MONGO
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "3001:27017"

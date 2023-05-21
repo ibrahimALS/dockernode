@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # NGINX
+  nginx:
+    container_name: nginx-blance-loader
+    image: nginx:stable-alpine3.17-slim
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - node
+  # NODE
+  node:
+    # container_name: nodeserver
+    build: .
+    environment:
+      - PORT=3000
+    depends_on:
+      - mongo
+  # MONGO
+  mongo:
+    container_name: mongodb
+    image: mongo:4.2.24-bionic
+    volumes:
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db:
