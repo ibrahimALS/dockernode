@@ -18,10 +18,17 @@ exports.getAllPosts = async (req, res) => {
 exports.getOnePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
-        res.status(200).json({
-            ok: true,
-            data: { post }
-        })
+        if (post) {
+            res.status(200).json({
+                ok: true,
+                data: { post }
+            })
+        } else {
+            res.status(404).json({
+                ok: false,
+                message: "post not found."
+            })
+        }
     } catch (e) {
         res.status(400).json({
             ok: false,

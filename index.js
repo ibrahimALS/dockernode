@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const cors = require('cors');
+const path = require('path')
 
 const app = express();
 
@@ -36,6 +37,8 @@ connectDatabase = () => {
 
 connectDatabase()
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/api', (req, res) => {
     console.log("/api");
     res.send({ message: "docker node server api " })
@@ -43,5 +46,8 @@ app.get('/api', (req, res) => {
 
 app.use('/api/v1/users', require('./routes/userRoutes'))
 app.use('/api/v1/posts', require('./routes/postRoutes'))
+
+// SPA route 
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
 app.listen(APP_SERVER_PORT, () => console.log(`\nhttp://localhost:${APP_SERVER_PORT}`));

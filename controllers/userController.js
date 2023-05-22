@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
         if (user) {
             if (Bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.user = user;
-                res.status(404).json({
+                res.status(200).json({
                     ok: true,
                     data: { user }
                 })
