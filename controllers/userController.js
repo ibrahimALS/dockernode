@@ -1,6 +1,5 @@
 const User = require('../models/userModel');
 const Bcrypt = require('bcryptjs')
-
 exports.signup = async (req, res) => {
     try {
         if (req.body.password) {
@@ -19,7 +18,6 @@ exports.signup = async (req, res) => {
         })
     }
 }
-
 exports.login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email })
