@@ -1,5 +1,4 @@
 const Post = require('../models/postModel');
-
 exports.getAllPosts = async (req, res) => {
     try {
         const posts = await Post.find()
@@ -14,7 +13,6 @@ exports.getAllPosts = async (req, res) => {
         })
     }
 }
-
 exports.getOnePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
@@ -36,7 +34,6 @@ exports.getOnePost = async (req, res) => {
         })
     }
 }
-
 exports.createPost = async (req, res) => {
     try {
         const post = await Post.create(req.body)
@@ -51,7 +48,6 @@ exports.createPost = async (req, res) => {
         })
     }
 }
-
 exports.updatePost = async (req, res) => {
     try {
         await Post.findByIdAndUpdate(req.params.id, req.body)
@@ -67,7 +63,6 @@ exports.updatePost = async (req, res) => {
         })
     }
 }
-
 exports.deletePost = async (req, res) => {
     try {
         const post = await Post.findByIdAndDelete(req.params.id)
