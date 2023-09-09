@@ -11,10 +11,11 @@ exports.signup = async (req, res) => {
             ok: true,
             data: { user }
         })
-    } catch (e) {
+    } catch (errors) {
         res.status(400).json({
             ok: false,
-            message: "somthing wrong!."
+            message: "somthing wrong!.",
+            errors
         })
     }
 }
@@ -35,10 +36,11 @@ exports.login = async (req, res) => {
                 message: "user not exists."
             })
         }
-    } catch (e) {
+    } catch (errors) {
         res.status(400).json({
             ok: false,
-            message: "somthing wrong!."
+            message: "somthing wrong!.",
+            errors
         })
     }
 }

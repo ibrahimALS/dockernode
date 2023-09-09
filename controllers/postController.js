@@ -6,10 +6,11 @@ exports.getAllPosts = async (req, res) => {
             ok: true,
             data: { posts }
         })
-    } catch (e) {
+    } catch (errors) {
         res.status(400).json({
             ok: false,
-            message: "somthing wrong!."
+            message: "somthing wrong!.",
+            errors
         })
     }
 }
@@ -27,10 +28,11 @@ exports.getOnePost = async (req, res) => {
                 message: "post not found."
             })
         }
-    } catch (e) {
+    } catch (errors) {
         res.status(400).json({
             ok: false,
-            message: "somthing wrong!."
+            message: "somthing wrong!.",
+            errors
         })
     }
 }
@@ -41,10 +43,11 @@ exports.createPost = async (req, res) => {
             ok: true,
             data: { post }
         })
-    } catch (e) {
+    } catch (errors) {
         res.status(400).json({
             ok: false,
-            message: "somthing wrong!."
+            message: "somthing wrong!.",
+            errors
         })
     }
 }
@@ -56,10 +59,11 @@ exports.updatePost = async (req, res) => {
             ok: true,
             data: { post }
         })
-    } catch (e) {
+    } catch (errors) {
         res.status(400).json({
             ok: false,
-            message: "somthing wrong!."
+            message: "somthing wrong!.",
+            errors
         })
     }
 }
@@ -70,10 +74,11 @@ exports.deletePost = async (req, res) => {
             ok: true,
             data: { post }
         })
-    } catch (e) {
+    } catch (errors) {
         res.status(400).json({
             ok: false,
-            message: "somthing wrong!."
+            message: "somthing wrong!.",
+            errors
         })
     }
 }
